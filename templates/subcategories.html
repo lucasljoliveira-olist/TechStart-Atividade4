@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    {{tittle}}
+{% endblock %}
+
+{% block body %}
+    <ul>
+    {% for sc in subcategories %}
+        {% if sc.get_parent().get_id() == category %}
+            <li> {{sc.get_name()}} </li> </br>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <a href="/">Voltar!</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    {{tittle}}
+{% endblock %}
+
+{% block body %}
+    <ul>
+    {% for m in marketplaces %}
+        <li><a href = "/category/ {{m.get_id()}}"> {{m.get_name()}} </a></li> </br>
+    {% endfor %}
+    <ul>
+{% endblock %}

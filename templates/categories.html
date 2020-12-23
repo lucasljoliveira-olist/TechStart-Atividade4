@@ -1,0 +1,18 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    {{tittle}}
+{% endblock %}
+
+{% block body%}
+    <ul>
+        {% for m in marketplaces %}
+            {% if m.get_id() == marketplace %}
+                {% for c in m.get_categories() %}
+                    <li><a href = "/listsubcategory/{{c.get_id()}}"> {{c.get_name()}} </a></li> </br>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <a href="/">Voltar!</a>
+    <ul>
+{% endblock %}

@@ -6,11 +6,9 @@
 
 {% block body%}
     <ul>
-        {% for m in marketplaces %}
-            {% if m.get_id() == marketplace %}
-                {% for c in m.get_categories() %}
-                    <li><a href = "/listsubcategory/{{c.get_id()}}"> {{c.get_name()}} </a></li> </br>
-                {% endfor %}
+        {% for c in categories %}
+            {% if c.get_marketplace() == marketplace %}
+                <li><a href = "/listsubcategory/{{c.get_name()}}"> {{c.get_name()}} </a></li> </br>
             {% endif %}
         {% endfor %}
         <a href="/">Voltar!</a>

@@ -1,0 +1,47 @@
+Veículos;;Americanas
+Tecnologia;;Americanas
+Casa e Eletrodomésticos;;Americanas
+Imóveis;;Americanas
+Beleza e Cuidados Pessoais;;Americanas
+Veículos;;Casas Bahia
+Tecnologia;;Casas Bahia
+Casa e Eletrodomésticos;;Casas Bahia
+Esporte e Lazer;;Casas Bahia
+Brinquedos;;Casas Bahia
+Imóveis;;Casas Bahia
+Beleza e Cuidados Pessoais;;Casas Bahia
+Veículos;;Ponto Frio
+Casa e Eletrodomésticos;;Ponto Frio
+Esporte e Lazer;;Ponto Frio
+Brinquedos;;Ponto Frio
+Imóveis;;Ponto Frio
+Beleza e Cuidados Pessoais;;Ponto Frio
+Veículos;;Shopee
+Tecnologia;;Shopee
+Casa e Eletrodomésticos;;Shopee
+Esporte e Lazer;;Shopee
+Brinquedos;;Shopee
+Beleza e Cuidados Pessoais;;Shopee
+Veículos;;Magazine Luiza
+Tecnologia;;Magazine Luiza
+Esporte e Lazer;;Magazine Luiza
+Brinquedos;;Magazine Luiza
+Imóveis;;Magazine Luiza
+Veículos;;Submarino
+Tecnologia;;Submarino
+Casa e Eletrodomésticos;;Submarino
+Esporte e Lazer;;Submarino
+Brinquedos;;Submarino
+Imóveis;;Submarino
+Beleza e Cuidados Pessoais;;Submarino
+Tecnologia;;Shoptime
+Casa e Eletrodomésticos;;Shoptime
+Esporte e Lazer;;Shoptime
+Brinquedos;;Shoptime
+Imóveis;;Shoptime
+Beleza e Cuidados Pessoais;;Shoptime
+Celulares;Tecnologia;
+Cameras;Tecnologia;
+Games;Tecnologia;
+Utilidades Domésticas;Casa e Eletrodomésticos;
+Jardins e Exteriores;Casa e Eletrodomésticos;

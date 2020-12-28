@@ -1,15 +1,7 @@
 class Category:
-
-    def __init__(self, id: int, name: str):
-        self.__id = id
+    def __init__(self, name: str, marketplace : str):
         self.__name = name
-
-
-    def set_id(self, id: int) -> None:
-        self.__id = int(id)
-
-    def get_id(self) -> int:
-        return self.__id
+        self.__marketplace = marketplace
 
     def set_name(self, name: str) -> None:
         self.__name = name
@@ -17,29 +9,27 @@ class Category:
     def get_name(self) -> str:
         return self.__name
 
+    def get_marketplace(self) -> str:
+        return self.__marketplace
+
     def __str__(self):
         return f"""
-                Id: {self.get_id()}
                 Name: {self.get_name()}
                 """
         
 class SubCategory(Category):
-    def __init__(self, id: int, name: str, parent: Category):
+    def __init__(self, name: str, parent: str, marketplace : str):
         self.__parent = parent
-        super().__init__(id, name)
+        super().__init__(name, marketplace)
     
-    def get_parent(self) -> Category:
+    def get_parent(self) -> str:
         return self.__parent
     
-    def set_parent(self, parent: Category) -> None:
+    def set_parent(self, parent: str) -> None:
         self.__parent = parent
-    
-    def get_parent_name(self) -> str:
-        return self.get_parent().get_name()
     
     def __str__(self):
         return f"""
-                Id: {self.get_id()}
                 Name: {self.get_name()}
-                Mother: {self.get_parent_name()}
+                Mother: {self.get_parent()}
                 """

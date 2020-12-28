@@ -7,7 +7,7 @@
 {% block body %}
     <ul>
     {% for sc in subcategories %}
-        {% if sc.get_parent().get_id() == category %}
+        {% if sc.get_parent() == category %}
             <li> {{sc.get_name()}} </li> </br>
         {% endif %}
     {% endfor %}

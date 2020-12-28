@@ -7,7 +7,7 @@
 {% block body %}
     <ul>
     {% for m in marketplaces %}
-        <li><a href = "/category/ {{m.get_id()}}"> {{m.get_name()}} </a></li> </br>
+        <li><a href = "/category/{{m.get_name()}}"> {{m.get_name()}} </a></li> </br>
     {% endfor %}
     <ul>
 {% endblock %}

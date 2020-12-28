@@ -1,73 +1,69 @@
 from MarketPlaces import Marketplace
 from Categories import Category, SubCategory
+from datetime import datetime
+from pathlib import Path
 
 
-categories_list = [Category(1, 'Veículos'), 
-                Category(2, 'Tecnologia'), 
-                Category(3, 'Casa e Eletrodomésticos'),
-                Category(4, 'Esporte e Lazer'), 
-                Category(5, 'Brinquedos'), 
-                Category(6, 'Imóveis'), 
-                Category(7, 'Beleza e Cuidados Pessoais')]
+path_categories = '21.12.2020/Atividade 4/data/categorias.txt'
+path_marketplaces = '21.12.2020/Atividade 4/data/marketplaces.txt'
+path_logs = '21.12.2020/Atividade 4/data/olist_logs.txt'
 
-subcategories_list = [SubCategory(1, 'Celulares', categories_list[1]), 
-                    SubCategory(2, 'Cameras', categories_list[1]), 
-                    SubCategory(3, 'Games', categories_list[1]), 
-                    SubCategory(4, 'Utilidades Domésticas', categories_list[2]), 
-                    SubCategory(5, 'Jardins e Exteriores', categories_list[2])]
+def save_log(texto:str) -> None:
+    fileObj = Path(path_logs)
+    if fileObj.is_file():
+        log_file = open(path_logs, 'a')
+    else:
+        log_file = open(path_logs, 'x')
+    datahora = datetime.now()
+    datahora = datahora.strftime('%d/%m/%Y %H:%M')
+    log_file.write(f'{datahora} - {texto}\n')
+    log_file.close()
 
-marketplace_list = [Marketplace(1, 'Americanas', categories_list), 
-                    Marketplace(2, 'Submarino', categories_list), 
-                    Marketplace(3, 'Shoptime', categories_list), 
-                    Marketplace(4, 'Casas Bahia', categories_list), 
-                    Marketplace(5, 'Ponto Frio', categories_list), 
-                    Marketplace(6, 'Shopee', categories_list), 
-                    Marketplace(7, 'Magazine Luiza', categories_list)]
+def get_subcategories_txt() -> list:
+    fileObj = Path(path_categories)
+    if fileObj.is_file():
+        subcategories_file = open(path_categories, 'r')
+    else:
+        subcategories_file = open(path_categories, 'x')
+    subcategories = []
+    for c in subcategories_file:
+        aux = c.split(';')
+        if aux[1].strip() != '':
+            subcategories.append(SubCategory(aux[0].strip(), aux[1].strip(), ''))
+    subcategories_file.close()
 
+    save_log('get_subcategories_txt (ler subcategorias)')
+    return subcategories
 
-def list_marketplace_categories(marketplace : Marketplace):
-    h1 = '<h1> Categorias do marketplaceMarketplaces </h1>'
-    ol = '<ul>'
-    for c in marketplace.get_categories():
-        print(str(c.get_id()) + ' - ' + c.get_name())
-        ol += f'<li><a href = "/listcategory">{c.get_name()}</a></li> </ br>'
-    ol += '<ul>'
-    return h1 + ol
+def get_categories_txt() -> list:
+    fileObj = Path(path_categories)
+    if fileObj.is_file():
+        categories_file = open(path_categories, 'r')
+    else:
+        categories_file = open(path_categories, 'x')
+    categories = []
+    for c in categories_file:
+        aux = c.split(';')
+        if aux[1].strip() == '':
+            categories.append(Category(aux[0].strip(), aux[2].strip()))
+    categories_file.close()
 
-def list_categories(categories : list):
-    h1 = '<h1> Categorias </h1>'
-    ol = '<ul>'
-    for c in categories:
-        print(str(c.get_id()) + ' - ' + c.get_name())
-        ol += f'<li><a href = "/listsubcategory">{c.get_name()}</a></li> </ br>'
-    ol += '<ul>'
-    return h1 + ol
+    save_log('get_categories_txt (ler categorias)')
 
-def list_marketplace(marketplaces : list):
-    h1 = '<h1> Marketplaces </h1>'
-    ol = '<ul>'
-    for c in marketplaces:
-        print(str(c.get_id()) + ' - ' + c.get_name())
-        ol += f'<li><a href = "/listcategory/{{category.get_name()}}">{c.get_name()}</a></li> </ br>'
-    ol += '<ul>'
-    return h1 + ol
+    return categories
 
-def list_subcategories(category : Category, subcategories: list):
-    h1 = '<h1> Subcategorias </h1>'
-    ol = '<ul>'
-    for c in subcategories:
-        if c.get_parent_name() == category.get_name():
-            print(str(c.get_id()) + ' - ' + c.get_name())
-            ol += f'<li><a href = "/listcategory">{c.get_name()}</a></li> </ br>'
-    
-    ol += '<ul>'
-    return h1 + ol
+def get_marketplaces_txt() -> list:
+    fileObj = Path(path_marketplaces)
+    if fileObj.is_file():
+        marketplaces_file = open(path_marketplaces, 'r')
+    else:
+        marketplaces_file = open(path_marketplaces, 'x')
+    marketplaces = []
+    for m in marketplaces_file:
+        marketplaces.append(Marketplace(m.strip(), []))
+    marketplaces_file.close()
 
-def get_marketplaces() -> list:
-    return marketplace_list
+    save_log('get_marketplaces_txt (ler marketplaces)')
 
-def get_subcategories() -> list:
-    return subcategories_list
+    return marketplaces
 
-def get_categories() -> list:
-    return categories_list

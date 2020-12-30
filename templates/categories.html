@@ -1,16 +1,23 @@
 {% extends 'template.html' %}
 
 {% block title %}
-    {{tittle}}
+    {{tittle}} {{marketplace}}
 {% endblock %}
 
-{% block body%}
-    <ul>
-        {% for c in categories %}
-            {% if c.get_marketplace() == marketplace %}
-                <li><a href = "/listsubcategory/{{c.get_name()}}"> {{c.get_name()}} </a></li> </br>
-            {% endif %}
-        {% endfor %}
-        <a href="/">Voltar!</a>
-    <ul>
+{% block body %}
+    <form action='/addcategory'>
+        <input type='hidden' name='marketplace' value= "{{marketplace}}"/>
+        <ul>
+            {% for c in categories %}
+                {% if c.get_marketplace() == marketplace %}
+                    <li> <a href = "/listsubcategory/{{c.get_name()}}"> {{c.get_name()}} </a> </li>
+                    </br>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <label>Adicionar Categoria: </label> <input type='text' name='new_category'/>
+        <input type='submit' value='Adicionar'/> 
+    </form>
+    </br>
+    <a href="/">Voltar para marketplaces</a>
 {% endblock %}

@@ -45,3 +45,5 @@ Cameras;Tecnologia;
 Games;Tecnologia;
 Utilidades Domésticas;Casa e Eletrodomésticos;
 Jardins e Exteriores;Casa e Eletrodomésticos;
+Motores;;Americanas
+1234;Veículos;

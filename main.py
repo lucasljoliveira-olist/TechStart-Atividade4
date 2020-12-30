@@ -15,9 +15,74 @@ def save_log(texto:str) -> None:
     else:
         log_file = open(path_logs, 'x')
     datahora = datetime.now()
-    datahora = datahora.strftime('%d/%m/%Y %H:%M')
+    datahora = datahora.strftime('%d/%m/%Y %H:%M:%S')
     log_file.write(f'{datahora} - {texto}\n')
     log_file.close()
+
+def set_marketplace_txt(marketplace:str) -> bool:
+    if marketplace == '':
+        return False
+    fileObj = Path(path_marketplaces)
+    if fileObj.is_file():
+        marketplaces_file = open(path_marketplaces, 'r')
+        for m in marketplaces_file:
+            if m.strip() == marketplace:
+                marketplaces_file.close()
+                return False
+        marketplaces_file = open(path_marketplaces, 'a')
+    else:
+        marketplaces_file = open(path_marketplaces, 'x')
+
+    marketplaces_file.write('\n' + marketplace)
+    marketplaces_file.close()
+    
+    save_log('set_marketplace_txt (adicionar marketplaces)')
+
+    return True
+
+def set_category_txt(marketplace:str, category:str) -> bool:
+    if category == '':
+        return False
+    fileObj = Path(path_categories)
+    if fileObj.is_file():
+        categories_file = open(path_categories, 'r')
+        for c in categories_file:
+            aux = c.split(';')
+            if aux[1] == '' and aux[0].strip() == category and aux[2].strip() == marketplace:
+                categories_file.close()
+                return False
+        categories_file = open(path_categories, 'a')
+    else:
+        categories_file = open(path_categories, 'x')
+    
+    categories_file.write('\n' + category + ';;' + marketplace)
+    categories_file.close()
+
+    save_log('set_category_txt (adicionar categoria)')
+
+    return True
+
+def set_subcategory_txt(category:str, subcategory:str) -> bool:
+    if category == '':
+        return False
+    fileObj = Path(path_categories)
+    if fileObj.is_file():
+        categories_file = open(path_categories, 'r')
+        for c in categories_file:
+            aux = c.split(';')
+            if aux[1] == category and aux[0].strip() == subcategory and aux[2].strip() == '':
+                categories_file.close()
+                return False
+        categories_file = open(path_categories, 'a')
+    else:
+        categories_file = open(path_categories, 'x')
+    
+    categories_file.write('\n' + subcategory + ';' + category  + ';')
+    categories_file.close()
+
+    save_log('set_subcategory_txt (adicionar subcategoria)')
+
+    return True
 
 def get_subcategories_txt() -> list:
     fileObj = Path(path_categories)

@@ -9,5 +9,9 @@
     {% for m in marketplaces %}
         <li><a href = "/category/{{m.get_name()}}"> {{m.get_name()}} </a></li> </br>
     {% endfor %}
-    <ul>
+    </ul>
+<form action='/addmarketplace'>
+    <label>Adicione um novo marketplace: </label><input type="text", name='new_marketplace'/>
+    <input type='submit' value='Adicionar' /> </br>
+</form>
 {% endblock %}

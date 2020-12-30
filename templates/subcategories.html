@@ -5,12 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <ul>
-    {% for sc in subcategories %}
-        {% if sc.get_parent() == category %}
-            <li> {{sc.get_name()}} </li> </br>
-        {% endif %}
-    {% endfor %}
-    </ul>
-    <a href="/">Voltar!</a>
+    <form action= '/addsubcategory'>
+        <input type="hidden" name = 'category' value="{{category}}"/>
+        <ul>
+        {% for sc in subcategories %}
+            {% if sc.get_parent() == category %}
+                <li> {{sc.get_name()}} </li> </br>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+        <label>Adicionar uma subcategoria: </label><input type="text" name= 'new_subcategory' />
+        <input type='submit' value='Adicionar' />
+    </form>
+    </br>
+    <a href="/">Voltar para marketplaces</a>
 {% endblock %}

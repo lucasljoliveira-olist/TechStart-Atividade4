@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    Adicionando {{tittle}}!
+{% endblock %}
+
+{% block body %}
+    {% if add %}
+        {{type}} {{tittle}} adicionado!
+    {% endif %}
+    {% if not add %}
+        Campo em branco ou dado existente ou marketplace não selecionado!
+    {% endif %} </br></br>
+    <a href="/">Voltar para marketplaces</a>
+{% endblock %}
